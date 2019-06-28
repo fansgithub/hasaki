@@ -1,0 +1,21 @@
+{
+  "name": "hasaki",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "hasaki": "./scripts/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^2.20.0",
+    "inquirer": "^6.4.1",
+    "ora": "^3.4.0",
+    "shelljs": "^0.8.3"
+  }
+}
