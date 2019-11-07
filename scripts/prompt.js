@@ -11,7 +11,6 @@ const templates = require('./templates.js')
 module.exports = function(options, project){
     let answers = {
         project,
-        port: options.port,
         description: options.description,
         author: options.author,
         origin: options.origin
@@ -29,15 +28,6 @@ module.exports = function(options, project){
         });
     }else{
         answers.template = templates[0].value;
-    }
-    if(options.port === undefined){
-        prompts.push({
-            type: 'input',
-            name: 'port',
-            default: '9000',
-            message: '请输入项目端口，确保端口不被占用',
-            validate: (port)=>/^\d+$/.test(port) || '请输入正确的端口号',
-        });
     }
     if(options.description === undefined){
         prompts.push({
@@ -59,7 +49,7 @@ module.exports = function(options, project){
         prompts.push({
             type: 'input',
             name: 'origin',
-            message: `请输入项目git仓库地址（比如 ${template}）`,
+            message: `请输入项目的仓库地址（比如 ${template}）`,
             validate: (origin) => {
                 return !origin
                     || /git@.*\.git/.test(origin)
@@ -70,7 +60,6 @@ module.exports = function(options, project){
     inquirer.prompt(prompts).then(function(result){
         answers = Object.assign(answers, result);
         // 将端口转成数字，方便以后进行数值计算
-        answers.port = parseInt(answers.port);
         spinner.start('下载代码');
         shell.exec(`git clone ${answers.template} "${answers.project}"`)
         spinner.succeed();

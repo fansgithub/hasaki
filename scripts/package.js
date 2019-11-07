@@ -13,14 +13,6 @@ exports.update = function(answers){
         updateBasicInfo(data);
         data.repository.url = answers.origin;
     });
-    update('public', (data)=>{
-        updateBasicInfo(data);
-        data.config.port = answers.port;
-    });
-    update('server', (data)=>{
-        updateBasicInfo(data);
-        data.config.port = answers.port + 1;
-    });
 };
 
 function update(folder, handle){

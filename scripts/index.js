@@ -13,7 +13,6 @@ program
 //通过命令创建项目
 .command('create <project>')
 .description('创建项目')
-.option('-p, --port <port>', '项目端口，比如`7510`')
 .option('-d, --description <description>', '项目描述')
 .option('-a, --author <author>', '项目作者')
 .option('-o, --origin <origin>', '项目地址')
